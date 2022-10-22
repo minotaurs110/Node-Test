@@ -1,0 +1,21 @@
+// ****************************************** Task 3 ***************************************************
+/*
+1) What options do we have to establish such communication? 
+   We can use a message pattern or an event pattern to communicate with the microservice. The message pattern acts like a request-response method. 
+   It is suitable for exchanging messages between services and the event pattern when you just want to publish events without waiting for a response.
+    - Synchronous communication.
+    - asynchronous communication
+     I recommend a message queue or redis
+2) For each option describe what are the pros and cons of this solution? 
+    -synchronous
+    RESTful web API endpoints and RPC integration styles are well suited for synchronous communication between microservices, 
+    where a client microservice needs to initiate a request and wait for a response. 
+    However, both approaches lead to a tight coupling between microservices and versioning issues.
+    -asynchronous
+    Integrating microservices through messaging or streaming brokers allows for loosely coupled communication. 
+    However, messages can stay in streaming brokers for as long as necessary, even after they have been processed by consumers.
+3) For each option describe what are the cases the solution fits best? 
+    With Redis, in both your node applications you have two Redis clients doing pub/sub. 
+    So each node.js app would have a publisher and subscriber client (yes you need 2 clients per node process for Redis pub/sub)
+    With ZeroMQ, you can send messages via IPC channels, directly between node.js processes.
+*/
